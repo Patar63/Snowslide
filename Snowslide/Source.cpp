@@ -10,6 +10,7 @@ int climb = 5;
 //variable to track which level you're on
 int layer = 1;
 char input;
+bool start = false;
 
 int main()
 {
@@ -22,13 +23,17 @@ int main()
 	int play{};
 
 	//starts up game so player can choose when to begin
-	cout << "You are a new hiker, determined to climb the mountain in front of you. Good luck, and be careful of snowslides.\n";
-	cout << "Press Enter to start...\n";
-	getline(cin, enterPressed);
+	if (start == false;)
+	{
+		cout << "You are a new hiker, determined to climb the mountain in front of you. Good luck, and be careful of snowslides.\n";
+		cout << "Press Enter to start...\n";
+		getline(cin, enterPressed);
+	}
 
 	if (enterPressed.empty())
 	{
 		//randomizes cards in hand
+		start = true;
 		card1 = (rand() % 6) + 1;
 		card2 = (rand() % 6) + 1;
 		card3 = (rand() % 6) + 1;
@@ -41,7 +46,7 @@ int main()
 		}
 		else
 		{
-			cout << "You are on a climb space! To ascend to the next level, you must play a 1";
+			cout << "You are on a climb space! To ascend to the next level, you must play a 1.";
 		}
 		cout << "1: " << card1 << "\n";
 		cout << "2: " << card2 << "\n";
@@ -54,6 +59,8 @@ int main()
 		if (play == 1 || play == 2 || play == 3)
 		{
 			movement(play, climb, card1, card2, card3, layer);
+
+			main();
 		}
 	}
 	else
@@ -127,4 +134,5 @@ int movement(int play, int climb, int card1, int card2, int card3, int layer)
 
 	//retruns value for where the player is on the board
 	return climb;
+	return layer;
 }
