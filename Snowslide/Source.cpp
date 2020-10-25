@@ -57,18 +57,26 @@ int movement(int play, int climb, int card1, int card2, int card3)
 		
 		if (climb < 0)
 		{
-			int overflow;
-			overflow = climb * -1;
-
+			climb = climb + 6;
 		}
 	}
 	else if (play == 2)
 	{
 		climb = climb - card2;
+
+		if (climb < 0)
+		{
+			climb = climb + 6;
+		}
 	}
 	else if (play == 3)
 	{
 		climb = climb - card3;
+
+		if (climb < 0)
+		{
+			climb = climb + 6;
+		}
 	}
 
 	//retruns value for where the player is on the board
