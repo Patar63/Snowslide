@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-int movement(int, int, int, int, int);
+int movement(int, int, int, int, int, int);
 int selection(int);
 
 //variable to track how far from climb spot
@@ -53,7 +53,7 @@ int main()
 		//runs the movement function
 		if (play == 1 || play == 2 || play == 3)
 		{
-			movement(play, climb, card1, card2, card3);
+			movement(play, climb, card1, card2, card3, layer);
 		}
 	}
 	else
@@ -77,7 +77,7 @@ int selection(int play)
 }
 
 
-int movement(int play, int climb, int card1, int card2, int card3)
+int movement(int play, int climb, int card1, int card2, int card3, int layer)
 {
 	//changes climb based on which card is played
 	if (play == 1)
@@ -89,6 +89,12 @@ int movement(int play, int climb, int card1, int card2, int card3)
 		{
 			climb = climb + 6;
 		}
+		//moves them up a layer if 1 is played
+		if (climb == 0 && card1 == 1)
+		{
+			climb = 5;
+			layer++;
+		}
 	}
 	else if (play == 2)
 	{
@@ -98,6 +104,11 @@ int movement(int play, int climb, int card1, int card2, int card3)
 		{
 			climb = climb + 6;
 		}
+		if (climb == 0 && card2 == 1)
+		{
+			climb = 5;
+			layer++;
+		}
 	}
 	else if (play == 3)
 	{
@@ -106,6 +117,11 @@ int movement(int play, int climb, int card1, int card2, int card3)
 		if (climb < 0)
 		{
 			climb = climb + 6;
+		}
+		if (climb == 0 && card3 == 1)
+		{
+			climb = 5;
+			layer++;
 		}
 	}
 
