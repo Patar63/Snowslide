@@ -21,9 +21,10 @@ int main()
 	int card3;
 	//store place for value of which card gets played by the player
 	int play{};
+	char restart;
 
 	//starts up game so player can choose when to begin
-	if (start == false;)
+	if (start == false)
 	{
 		cout << "You are a new hiker, determined to climb the mountain in front of you. Good luck, and be careful of snowslides.\n";
 		cout << "Press Enter to start...\n";
@@ -66,6 +67,19 @@ int main()
 	else
 	{
 		cout << "Sorry, but you pressed a wrong key";
+	}
+
+	//victory condition
+	if (layer == 6)
+	{
+		start = false;
+		cout << "Congrats! You made it all the way to the top! Would you like to restart? y/n\n";
+		cin >> restart;
+
+		if (restart == 'y')
+		{
+			main();
+		}
 	}
 }
 
