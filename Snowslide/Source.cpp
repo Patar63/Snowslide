@@ -27,6 +27,7 @@ int main()
 	if (start == false)
 	{
 		cout << "You are a new hiker, determined to climb the mountain in front of you. Good luck, and be careful of snowslides.\n";
+		cout << "Please note that you can not go up more than one layer using the same CLIMB space.\n";
 		cout << "Press Enter to start...\n";
 		getline(cin, enterPressed);
 	}
@@ -47,7 +48,7 @@ int main()
 		}
 		else
 		{
-			cout << "You are on a climb space! To ascend to the next level, you must play a 1.";
+			cout << "You are on a CLIMB space! To ascend to the next level, you must play a 1.";
 		}
 		cout << "1: " << card1 << "\n";
 		cout << "2: " << card2 << "\n";
@@ -76,15 +77,26 @@ int main()
 		cout << "Congrats! You made it all the way to the top! Would you like to restart? y/n\n";
 		cin >> restart;
 
-		if (restart == 'y')
+		while (restart != 'y' || restart != 'n')
 		{
-			main();
+			if (restart == 'y')
+			{
+				main();
+			}
+			else if (restart == 'n')
+			{
+				exit(0);
+			}
+			else
+			{
+				cout << "Please enter y or n.\n";
+			}
 		}
 	}
 }
 
 
-int selection(int play)
+int selection(int play)	//Function to pick cards
 {
 	cin >> play;
 
@@ -98,7 +110,7 @@ int selection(int play)
 }
 
 
-int movement(int play, int climb, int card1, int card2, int card3, int layer)
+int movement(int play, int climb, int card1, int card2, int card3, int layer)	//Function for player movement
 {
 	//changes climb based on which card is played
 	if (play == 1)
