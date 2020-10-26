@@ -18,7 +18,7 @@ void gameEnd();
 void snowslideChance(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces)
 {
 	srand(time(NULL));
-	int chanceCard = rand() % 4 + 1;
+	int chanceCard = rand() % 7 + 1;
 
 
 
@@ -56,6 +56,7 @@ void snowslideChance(int& mountainLayer, int& rope1, int& rope2, int& rope3, int
 
 void increaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces) 
 {
+   
 	if (mountainLayer == 0) {
 
 		
@@ -67,7 +68,7 @@ void increaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& 
 		rope4 = 16;
 		rope5 = 20;
 		std::cout << "Your path grows steeper!\n";
-		std::cout << "You have made it to mountain layer " << mountainLayer << ".\n";
+		std::cout << "You have made it to mountain layer " << mountainLayer << ".\n\n";
 	}
 	else if (mountainLayer == 1) 
 	{
@@ -80,7 +81,7 @@ void increaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& 
 		rope4 = 12;
 		rope5 = 15;
 		std::cout << "Your path grows steeper!\n";
-		std::cout << "You have made it to mountain layer " << mountainLayer << ".\n";
+		std::cout << "You have made it to mountain layer " << mountainLayer << ".\n\n";
 	}
 	else if (mountainLayer == 2) 
 	{
@@ -169,17 +170,7 @@ void ropeSelection(int& playerMovement, int& mountainLayer, int& rope1, int& rop
 			correctSelection = true;
 			
 		}
-		else if (playerSelection == 1  && playerRoll1 != 1) 
-		{
-			std::cout << "Sorry but you did not manage to climb the rope!\n";
-			correctSelection = true;
-		}
-		else if (playerSelection == 2 && playerRoll1 != 1)
-		{
-			std::cout << "Sorry but you did not manage to climb the rope!\n";
-			correctSelection = true;
-		}
-		else if (playerSelection == 3 && playerRoll1 != 1)
+		else if (playerSelection <= 3 && playerSelection >=0) 
 		{
 			std::cout << "Sorry but you did not manage to climb the rope!\n";
 			correctSelection = true;
@@ -232,8 +223,10 @@ void cardSelection(int& playerMovement)
 	}
 }
 
-
-
+// Could be used to call for the rope number
+// int returnRope(int &totalPlayerMovement,int &maxLayer,int &mountainLayer) {
+//		return totalPlayerMovement / (maxLayer - mountainLayer + 2)
+// }
 void gameStart() 
 {
 	
@@ -262,13 +255,16 @@ void gameStart()
 		snowslideChance(mountainLayer, rope1, rope2, rope3, rope4, rope5, totalPlayerMovement, totalSpaces);
 		
 		totalPlayerMovement += playerMovement;
-		std::cout << "You have moved "<< playerMovement << " spaces!\n";
-		std::cout << "Your total movement is " << totalPlayerMovement << "\n";
+		std::cout << "You have moved ["<< playerMovement << "] spaces!\n";
+		std::cout << "Your total movement is: [" << totalPlayerMovement << "]\n";
+		std::cout << "Your current layer is: [" << mountainLayer << "]\n\n";
 		
 		
 
+		// if  (totalPlayerMovement % (maxLayer-mountainLayer+2) == 0 && totalPlayerMovement < 5*(maxLayer-mountainLayer+2))
+		// cout << your current rope is << returnRope(int &totalPlayerMovement,int &maxLayer,int &mountainLayer);
+		// Could be used as a replacement for selecting the rope and its position
 
-		
 		if (totalPlayerMovement == rope1)
 		{
 			std::cout << "\nYou have reached rope 1! If you select a 1 you may advance up the mountain!\n";
