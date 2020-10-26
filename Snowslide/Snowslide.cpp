@@ -79,7 +79,8 @@ void increaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& 
 		rope3 = 9;
 		rope4 = 12;
 		rope5 = 15;
-
+		std::cout << "Your path grows steeper!\n";
+		std::cout << "You have made it to mountain layer " << mountainLayer << ".\n";
 	}
 	else if (mountainLayer == 2) 
 	{
