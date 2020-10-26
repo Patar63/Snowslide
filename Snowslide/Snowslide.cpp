@@ -33,7 +33,7 @@ void snowslideChance(int& mountainLayer, int& rope1, int& rope2, int& rope3, int
 				std::cout << "Thankfully your at the bottom of the mountain and it doesn't reach you!\n";
 				std::cout << "\n";
 			}
-			else if (mountainLayer == 1) 
+			else
 			{
 				std::cout << "\n";
 				std::cout << "Due to the snowslide you have fallen down a level of the mountain!\n";
@@ -41,13 +41,7 @@ void snowslideChance(int& mountainLayer, int& rope1, int& rope2, int& rope3, int
 				decreaseLevel(mountainLayer, rope1, rope2, rope3, rope4, rope5, totalPlayerMovement, totalSpaces);
 				
 			}
-			else if (mountainLayer == 2) 
-			{
-				std::cout << "\n";
-				std::cout << "Due to the snowslide you have fallen down a level of the mountain!\n";
-				std::cout << "\n";
-				decreaseLevel(mountainLayer, rope1, rope2, rope3, rope4, rope5, totalPlayerMovement, totalSpaces);
-			}
+
 		
 
 
