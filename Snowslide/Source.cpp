@@ -6,7 +6,7 @@ int movement(int, int, int, int, int, int);
 int selection(int);
 
 //variable to track how far from climb spot
-int climb = 5;
+int climb = 2;
 //variable to track which level you're on
 int layer = 1;
 char input;
@@ -20,13 +20,6 @@ int main()
 {
 	//initializes the needed variables
 	string enterPressed;
-	//variable to track how far from climb spot
-	int climb = 2;
-	//variable to track which level you're on
-	int layer = 1;
-	int card1;
-	int card2;
-	int card3;
 
 	//variable to track which space the player lands on
 	int space = { 0 };
@@ -123,7 +116,6 @@ int main()
 
 
 int selection(int play)	//Function to pick cards
-int movement(int play, int climb, int card1, int card2, int card3, int layer, int space)
 {
 	cin >> play;
 
@@ -137,7 +129,7 @@ int movement(int play, int climb, int card1, int card2, int card3, int layer, in
 }
 
 
-int movement(int play, int climb, int card1, int card2, int card3, int layer)	//Function for player movement
+int movement(int play, int climb, int card1, int card2, int card3, int layer, int space)	//Function for player movement
 {
 	//changes climb based on which card is played
 	if (play == 1)
