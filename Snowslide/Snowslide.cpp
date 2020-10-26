@@ -3,19 +3,19 @@
 #include <time.h>
 #include <stdlib.h>
 
+//Declaring every function needed
+void gameStart();	//Begins the game
+void playerInfo();	//Rules and Objective
 
-void gameStart();
-void playerInfo();
+void playerIntroduction();	//Game Intro
+void cardSelection(int& playerMovement);	//Card picker
+void ropeSelection(int& playerMovement, int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces);	//Use a rope
+void increaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces);	//Go up a layer
+void decreaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces);	//Go down a layer
+void snowslideChance(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces);	//Event of going down
+void gameEnd();	//End message
 
-void playerIntroduction();
-void cardSelection(int& playerMovement);
-void ropeSelection(int& playerMovement, int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces);
-void increaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces);
-void decreaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces);
-void snowslideChance(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces);
-void gameEnd();
-
-void snowslideChance(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces)
+void snowslideChance(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces)	//Function when player triggers a snowslide
 {
 	srand(time(NULL));
 	int chanceCard = rand() % 7 + 1;
@@ -41,14 +41,10 @@ void snowslideChance(int& mountainLayer, int& rope1, int& rope2, int& rope3, int
 				decreaseLevel(mountainLayer, rope1, rope2, rope3, rope4, rope5, totalPlayerMovement, totalSpaces);
 				
 			}
-
-		
-
-
 	}
 }
 
-void increaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces) 
+void increaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces)	//Function when player goes up a layer
 {
    
 	if (mountainLayer == 0) {
@@ -84,7 +80,7 @@ void increaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& 
 
 }
 
-void decreaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces) 
+void decreaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces)	//Function when player goes down a layer
 {
 	if (mountainLayer == 1) {
 
@@ -111,7 +107,7 @@ void decreaseLevel(int& mountainLayer, int& rope1, int& rope2, int& rope3, int& 
 	}
 }
 
-void gameEnd() 
+void gameEnd()	//Function to display end game message
 {
 	std::cout << "   _____                                          _         \n";
 	std::cout << "  / ____|                                        | |        \n";
@@ -125,7 +121,7 @@ void gameEnd()
 	exit(0);
 }
 
-void ropeSelection(int& playerMovement, int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces)
+void ropeSelection(int& playerMovement, int& mountainLayer, int& rope1, int& rope2, int& rope3, int& rope4, int& rope5, int& totalPlayerMovement, int& totalSpaces)	//Function to determine which rope the player uses
 {
 	srand(time(NULL));
 	int playerRoll1 = rand() % 6 + 1;
@@ -177,7 +173,7 @@ void ropeSelection(int& playerMovement, int& mountainLayer, int& rope1, int& rop
 }
 
 
-void cardSelection(int& playerMovement) 
+void cardSelection(int& playerMovement)	//Function for player to pick 3 cards
 {
 	srand(time(NULL));
 	int playerRoll1 = rand() % 6 + 1;
@@ -221,7 +217,8 @@ void cardSelection(int& playerMovement)
 // int returnRope(int &totalPlayerMovement,int &maxLayer,int &mountainLayer) {
 //		return totalPlayerMovement / (maxLayer - mountainLayer + 2)
 // }
-void gameStart() 
+
+void gameStart() //Starts the game
 {
 	
 	bool gameStrt = true;
@@ -291,7 +288,7 @@ void gameStart()
 
 }
 
-void playerInfo() 
+void playerInfo() //Rules and objective of the player
 {
 	char playGame;
 
@@ -318,7 +315,7 @@ void playerInfo()
 
 
 
-void playerIntroduction() 
+void playerIntroduction() //Introduction of the game
 {
 	char playerInformation;
 	std::cout << "   _____                                    _   _       _       \n";
