@@ -11,14 +11,14 @@ int climb = 5;
 int layer = 1;
 char input;
 bool start = false;
+int card1 = (rand() % 6) + 1;
+int card2 = (rand() % 6) + 1;
+int card3 = (rand() % 6) + 1;
 
 int main()
 {
 	//initializes the needed variables
 	string enterPressed;
-	int card1;
-	int card2;
-	int card3;
 	//store place for value of which card gets played by the player
 	int play{};
 	char restart;
@@ -36,9 +36,6 @@ int main()
 	{
 		//randomizes cards in hand
 		start = true;
-		card1 = (rand() % 6) + 1;
-		card2 = (rand() % 6) + 1;
-		card3 = (rand() % 6) + 1;
 
 		//gets the wanted move spaces from player 
 		cout << "GAME START!!!\n";
@@ -116,6 +113,10 @@ int movement(int play, int climb, int card1, int card2, int card3, int layer)	//
 	if (play == 1)
 	{
 		climb = climb - card1;
+
+		//randomize a new card
+		card1 = (rand() % 6) + 1;
+		return card1;
 		
 		//corrects position if they go past the climb space
 		if (climb < 0)
@@ -133,6 +134,9 @@ int movement(int play, int climb, int card1, int card2, int card3, int layer)	//
 	{
 		climb = climb - card2;
 
+		card2 = (rand() % 6) + 1;
+		return card2;
+
 		if (climb < 0)
 		{
 			climb = climb + 6;
@@ -146,6 +150,9 @@ int movement(int play, int climb, int card1, int card2, int card3, int layer)	//
 	else if (play == 3)
 	{
 		climb = climb - card3;
+		
+		card3 = (rand() % 6) + 1;
+		return card3;
 
 		if (climb < 0)
 		{
