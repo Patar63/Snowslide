@@ -95,7 +95,7 @@ int main()
 		cout << "Congrats! You made it all the way to the top! Would you like to restart? y/n\n";
 		cin >> restart;
 
-		while (restart != 'y' || restart != 'n')
+		while (restart != 'y' && restart != 'n')
 		{
 			if (restart == 'y')
 			{
