@@ -33,18 +33,25 @@ int main()
 		card1 = (rand() % 6) + 1;
 		card2 = (rand() % 6) + 1;
 		card3 = (rand() % 6) + 1;
-
+	
 		//gets the wanted move spaces from player 
 		cout << "GAME START!!!\n";
-		cout << "You are currently " << climb << " spaces from the next rope spot. How far would you like to move?\n";
-		cout << "1: " << card1 << "\n";
-		cout << "2: " << card2 << "\n";
-		cout << "3: " << card3 << "\n";
-		cin >> play;
+		
+		while (layer != 4)
+		{
 
-		//runs the movement function
-		movement(play, climb, card1, card2, card3, layer, space);
+			cout << "You are currently " << climb << " spaces from the next rope spot. How far would you like to move?\n";
+			cout << "1: " << card1 << "\n";
+			cout << "2: " << card2 << "\n";
+			cout << "3: " << card3 << "\n";
+			cin >> play;
+
+		
+			//runs the movement function
+			movement(play, climb, card1, card2, card3, layer, space);
+		}
 	}
+	
 	else
 	{
 		cout << "Sorry, but you pressed the wrong key";
@@ -62,17 +69,72 @@ int movement(int play, int climb, int card1, int card2, int card3, int layer, in
 		{
 			//adds the card number to the space number
 			space = space + card1;
+			card1 = (rand() % 6) + 1;
 
 			if (space == 0 || space == 4 || space == 8 || space == 12 || space == 16)
 			{
 				//tells player where they landed and what happens
-				std::cout << "You have landed on a black space. Nothing happens.";
+				std::cout << "You have landed on a black space. Nothing happens.\n";
+
+				if (space == 0)
+				{
+					std::cout << "You are 2 spaces away from the climb space.\n";
+				}
+
+				if (space == 4)
+				{
+					std::cout << "You are 2 spaces away from the climb space.\n";
+				}
+
+				if (space == 8)
+				{
+					std::cout << "You are 2 spaces away from the climb space.\n";
+				}
+
+				if (space == 12)
+				{
+					std::cout << "You are 2 spaces away from the climb space.\n";
+				}
+
+				if (space == 16)
+				{
+					std::cout << "You are 2 spaces away from the climb space.\n";
+				}
+
+				climb = 2;
 			}
 
 			if (space == 1 || space == 5 || space == 9 || space == 13 || space == 17)
 			{
 				//tells player where they landed and what happens
-				std::cout << "You have landed on a blue space. Take a rest.";
+				std::cout << "You have landed on a blue space. Take a rest.\n";
+
+				if (space == 1)
+				{
+					std::cout << "You are 1 space away from the climb space.\n";
+				}
+
+				if (space == 5)
+				{
+					std::cout << "You are 1 space away from the climb space.\n";
+				}
+
+				if (space == 9)
+				{
+					std::cout << "You are 1 space away from the climb space.\n";
+				}
+
+				if (space == 13)
+				{
+					std::cout << "You are 1 space away from the climb space.\n";
+				}
+
+				if (space == 17)
+				{
+					std::cout << "You are 1 space away from the climb space.\n";
+				}
+
+				climb = 1;
 			}
 
 			if (space == 2 || space == 6 || space == 10 || space == 14 || space == 18)
@@ -81,159 +143,393 @@ int movement(int play, int climb, int card1, int card2, int card3, int layer, in
 				climb = 0;
 
 				//tells player where they landed and what happens
-				std::cout << "You have landed on a climb space. You are now on layer 2.";
+				std::cout << "You have landed on a climb space. You must now pick up a chance card and play a 1 to go up to layer 2.\n";
 
-				if (space == 2)
+				//displays the cards for the player to pick
+				cout << "1: " << card1 << "\n";
+				cout << "2: " << card2 << "\n";
+				cout << "3: " << card3 << "\n";
+				cin >> play;
+
+				//checks to see if the card's value is 1
+				if (play == 1 && card1 == 1)
+				{
+					layer++;
+				}
+
+				if (play == 2 && card2 == 1)
+				{
+					layer++;
+				}
+
+				if (play == 3 && card3 == 1)
+				{
+					layer++;
+				}
+
+				//makes the space value correspond with the space value on the next layer
+				if (space == 2 && layer == 2)
 				{
 					space = 0;
 				}
 
-				if (space == 6)
+				if (space == 6 && layer == 2)
 				{
 					space = 3;
 				}
 
-				if (space == 10)
+				if (space == 10 && layer == 2)
 				{
 					space = 6;
 				}
 
-				if (space == 14)
+				if (space == 14 && layer == 2)
 				{
 					space = 9;
 				}
 
-				if (space == 18)
+				if (space == 18 && layer == 2)
 				{
 					space = 12;
 				}
 
-				layer++;
+
 			}
+
+			if (space == 3 || space == 7 || space == 11 || space == 15 || space == 19)
+			{
+				//tells player where they landed and what happens
+				std::cout << "You have landed on a chance space. Pull a chance card.\n";
+
+				if (space == 3)
+				{
+					std::cout << "You are 3 spaces away from the climb space.\n";
+				}
+
+				if (space == 7)
+				{
+					std::cout << "You are 3 spaces away from the climb space.\n";
+				}
+
+				if (space == 11)
+				{
+					std::cout << "You are 3 spaces away from the climb space.\n";
+				}
+
+				if (space == 15)
+				{
+					std::cout << "You are 3 spaces away from the climb space.\n";
+				}
+
+				if (space == 19)
+				{
+					std::cout << "You are 3 spaces away from the climb space.\n";
+				}
+
+				climb = 3;
+			}
+				if (climb < 0)
+				{
+					overflow = climb * -1;
+				}
 			
-			if (climb < 0)
-			{ 
-				overflow = climb * -1;
-			}
-		}
 
-		//if the player played card 2
-		if (play == 2)
-		{
-			//adds the card number to the space number
-			space = space + card2;
-
-			if (space == 0 || space == 4 || space == 8 || space == 12 || space == 16)
+			//if the player played card 2
+			if (play == 2)
 			{
-				//tells player where they landed and what happens
-				std::cout << "You have landed on a black space. Nothing happens.";
+				//adds the card number to the space number
+				space = space + card2;
+				card2 = (rand() % 6) + 1;
+
+				if (space == 0 || space == 4 || space == 8 || space == 12 || space == 16)
+				{
+					//tells player where they landed and what happens
+					std::cout << "You have landed on a black space. Nothing happens.\n";
+
+
+					if (space == 0)
+					{
+						std::cout << "You are 2 spaces away from the climb space.\n";
+					}
+
+					if (space == 4)
+					{
+						std::cout << "You are 2 spaces away from the climb space.\n";
+					}
+
+					if (space == 8)
+					{
+						std::cout << "You are 2 spaces away from the climb space.\n";
+					}
+
+					if (space == 12)
+					{
+						std::cout << "You are 2 spaces away from the climb space.\n";
+					}
+
+					if (space == 16)
+					{
+						std::cout << "You are 2 spaces away from the climb space.\n";
+					}
+
+					climb = 2;
+				}
+
+				if (space == 1 || space == 5 || space == 9 || space == 13 || space == 17)
+				{
+					//tells player where they landed and what happens
+					std::cout << "You have landed on a blue space. Take a rest.\n";
+
+
+					if (space == 1)
+					{
+						std::cout << "You are 1 space away from the climb space.\n";
+					}
+
+					if (space == 5)
+					{
+						std::cout << "You are 1 space away from the climb space.\n";
+					}
+
+					if (space == 9)
+					{
+						std::cout << "You are 1 space away from the climb space.\n";
+					}
+
+					if (space == 13)
+					{
+						std::cout << "You are 1 space away from the climb space.\n";
+					}
+
+					if (space == 17)
+					{
+						std::cout << "You are 1 space away from the climb space.\n";
+					}
+
+					climb = 1;
+				}
+
+				if (space == 2 || space == 6 || space == 10 || space == 14 || space == 18)
+				{
+					//tells the system that the player is on a climb space
+					climb = 0;
+
+					//tells player where they landed and what happens
+					std::cout << "You have landed on a climb space. You must now pick up a chance card and play a 1 to go up to layer 2.\n";
+
+					if (space == 2 && layer == 2)
+					{
+						space = 0;
+					}
+
+					if (space == 6 && layer == 2)
+					{
+						space = 3;
+					}
+
+					if (space == 10 && layer == 2)
+					{
+						space = 6;
+					}
+
+					if (space == 14 && layer == 2)
+					{
+						space = 9;
+					}
+
+					if (space == 18 && layer == 2)
+					{
+						space = 12;
+					}
+
+					layer++;
+				}
+
+				if (space == 3 || space == 7 || space == 11 || space == 15 || space == 19)
+				{
+					//tells player where they landed and what happens
+					std::cout << "You have landed on a chance space. Pull a chance card.\n";
+
+					if (space == 3)
+					{
+						std::cout << "You are 3 spaces away from the climb space.\n";
+					}
+
+					if (space == 7)
+					{
+						std::cout << "You are 3 spaces away from the climb space.\n";
+					}
+
+					if (space == 11)
+					{
+						std::cout << "You are 3 spaces away from the climb space.\n";
+					}
+
+					if (space == 15)
+					{
+						std::cout << "You are 3 spaces away from the climb space.\n";
+					}
+
+					if (space == 19)
+					{
+						std::cout << "You are 3 spaces away from the climb space.\n";
+					}
+
+					climb = 3;
+				}
+
+				if (climb < 0)
+				{
+					overflow = climb * -1;
+				}
 			}
 
-			if (space == 1 || space == 5 || space == 9 || space == 13 || space == 17)
+			//if the player played card 3
+			if (play == 3)
 			{
-				//tells player where they landed and what happens
-				std::cout << "You have landed on a blue space. Take a rest.";
-			}
+				//adds the card number to the space number
+				space = space + card3;
+				card3 = (rand() % 6) + 1;
 
-			if (space == 2 || space == 6 || space == 10 || space == 14 || space == 18)
-			{
-				//tells the system that the player is on a climb space
-				climb = 0;
-
-				//tells player where they landed and what happens
-				std::cout << "You have landed on a climb space. You are now on layer 2.";
-
-				if (space == 2)
+				if (space == 0 || space == 4 || space == 8 || space == 12 || space == 16)
 				{
-					space = 0;
+					//tells player where they landed and what happens
+					std::cout << "You have landed on a black space. Nothing happens.\n";
+
+					if (space == 0)
+					{
+						std::cout << "You are 2 spaces away from the climb space.\n";
+					}
+
+					if (space == 4)
+					{
+						std::cout << "You are 2 spaces away from the climb space.\n";
+					}
+
+					if (space == 8)
+					{
+						std::cout << "You are 2 spaces away from the climb space.\n";
+					}
+
+					if (space == 12)
+					{
+						std::cout << "You are 2 spaces away from the climb space.\n";
+					}
+
+					if (space == 16)
+					{
+						std::cout << "You are 2 spaces away from the climb space.\n";
+					}
+
+					climb = 2;
 				}
 
-				if (space == 6)
+				if (space == 1 || space == 5 || space == 9 || space == 13 || space == 17)
 				{
-					space = 3;
+					//tells player where they landed and what happens
+					std::cout << "You have landed on a blue space. Take a rest.\n";
+
+					if (space == 1)
+					{
+						std::cout << "You are 1 space away from the climb space.\n";
+					}
+
+					if (space == 5)
+					{
+						std::cout << "You are 1 space away from the climb space.\n";
+					}
+
+					if (space == 9)
+					{
+						std::cout << "You are 1 space away from the climb space.\n";
+					}
+
+					if (space == 13)
+					{
+						std::cout << "You are 1 space away from the climb space.\n";
+					}
+
+					if (space == 17)
+					{
+						std::cout << "You are 1 space away from the climb space.\n";
+					}
+
+					climb = 1;
 				}
 
-				if (space == 10)
+				if (space == 2 || space == 6 || space == 10 || space == 14 || space == 18)
 				{
-					space = 6;
+					//tells the system that the player is on a climb space
+					climb = 0;
+
+					//tells player where they landed and what happens
+					std::cout << "You have landed on a climb space. You are now on You must now pick up a chance card and play a 1 to go up to layer 2.\n";
+
+					if (space == 2 && layer == 2)
+					{
+						space = 0;
+					}
+
+					if (space == 6 && layer == 2)
+					{
+						space = 3;
+					}
+
+					if (space == 10 && layer == 2)
+					{
+						space = 6;
+					}
+
+					if (space == 14 && layer == 2)
+					{
+						space = 9;
+					}
+
+					if (space == 18 && layer == 2)
+					{
+						space = 12;
+					}
+
+					layer++;
 				}
 
-				if (space == 14)
+				if (space == 3 || space == 7 || space == 11 || space == 15 || space == 19)
 				{
-					space = 9;
+					//tells player where they landed and what happens
+					std::cout << "You have landed on a chance space. Pull a chance card.\n";
+
+					if (space == 3)
+					{
+						std::cout << "You are 3 spaces away from the climb space.\n";
+					}
+
+					if (space == 7)
+					{
+						std::cout << "You are 3 spaces away from the climb space.\n";
+					}
+
+					if (space == 11)
+					{
+						std::cout << "You are 3 spaces away from the climb space.\n";
+					}
+
+					if (space == 15)
+					{
+						std::cout << "You are 3 spaces away from the climb space.\n";
+					}
+
+					if (space == 19)
+					{
+						std::cout << "You are 3 spaces away from the climb space.\n";
+					}
+
+					climb = 3;
 				}
 
-				if (space == 18)
+				if (climb < 0)
 				{
-					space = 12;
+					overflow = climb * -1;
 				}
-
-				layer++;
-			}
-
-			if (climb < 0)
-			{
-				overflow = climb * -1;
-			}
-		}
-
-		//if the player played card 3
-		if (play == 3)
-		{
-			//adds the card number to the space number
-			space = space + card3;
-
-			if (space == 0 || space == 4 || space == 8 || space == 12 || space == 16)
-			{
-				//tells player where they landed and what happens
-				std::cout << "You have landed on a black space. Nothing happens.";
-			}
-
-			if (space == 1 || space == 5 || space == 9 || space == 13 || space == 17)
-			{
-				//tells player where they landed and what happens
-				std::cout << "You have landed on a blue space. Take a rest.";
-			}
-
-			if (space == 2 || space == 6 || space == 10 || space == 14 || space == 18)
-			{
-				//tells the system that the player is on a climb space
-				climb = 0;
-
-				//tells player where they landed and what happens
-				std::cout << "You have landed on a climb space. You are now on layer 2.";
-
-				if (space == 2)
-				{
-					space = 0;
-				}
-
-				if (space == 6)
-				{
-					space = 3;
-				}
-
-				if (space == 10)
-				{
-					space = 6;
-				}
-
-				if (space == 14)
-				{
-					space = 9;
-				}
-
-				if (space == 18)
-				{
-					space = 12;
-				}
-
-				layer++;
-			}
-
-			if (climb < 0)
-			{
-				overflow = climb * -1;
 			}
 		}
 	}
