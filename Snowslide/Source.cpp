@@ -657,29 +657,6 @@ int movement(int play, int climb, int card1, int card2, int card3, int layer, in
 		}
 
 	}
-
-	////changes climb based on which card is played
-	//if (play == 1)
-	//{
-	//	climb = climb - card1;
-	//	
-	//	if (climb < 0)
-	//	{
-	//		int overflow;
-	//		overflow = climb * -1;
-
-	//	}
-	//}
-	//else if (play == 2)
-	//{
-	//	climb = climb - card2;
-	//}
-	//else if (play == 3)
-	//{
-	//	climb = climb - card3;
-	//}
-
-	//retruns value for where the player is on the board
 	return climb;
 	return layer;
 }
