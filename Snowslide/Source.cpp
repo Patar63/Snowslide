@@ -2,8 +2,8 @@
 #include <string>
 using namespace std;
 
-int movement(int, int, int, int, int, int);
 int selection(int);
+int movement(int, int, int, int, int, int, int);
 
 //variable to track how far from climb spot
 int climb = 2;
@@ -14,7 +14,6 @@ bool start = false;
 int card1 = (rand() % 6) + 1;
 int card2 = (rand() % 6) + 1;
 int card3 = (rand() % 6) + 1;
-int movement(int, int, int, int, int, int, int);
 
 int main()
 {
@@ -68,7 +67,7 @@ int main()
 		//runs the movement function
 		if (play == 1 || play == 2 || play == 3)
 		{
-			movement(play, climb, card1, card2, card3, layer);
+			movement(play, climb, card1, card2, card3, layer, space);
 
 			main();
 		}
@@ -132,7 +131,6 @@ int selection(int play)	//Function to pick cards
 int movement(int play, int climb, int card1, int card2, int card3, int layer, int space)	//Function for player movement
 {
 	//changes climb based on which card is played
-	if (play == 1)
 	int overflow;
 
 	if (layer == 1)
